@@ -59,5 +59,13 @@ namespace Business.Constants
 
         public static string CheckIfTypeExists = "Aynı tip eklenemez";
 
+        public static string AuthorizationDenied = "Yetkiniz yok!";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Şifre hatalı";
+        public static string SuccessfulLogin = "Sisteme giriş başarılı";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string UserAdded = "Kullanıcı kaydedildi";
+        public static string AccessTokenCreated = "Access token oluştuurldu";
+
     }
 }
