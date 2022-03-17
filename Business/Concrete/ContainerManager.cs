@@ -8,6 +8,8 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Validation;
 
 namespace Business.Concrete
 {
@@ -18,6 +20,7 @@ namespace Business.Concrete
         {
             _containerDal = containerDal;
         }
+        [ValidationAspect(typeof(ContainerValidator))]
         public IResult Add(Container container)
         {
             IResult result = BusinessRules.Run(CheckIfTypeExist(container.TypeName));
@@ -68,6 +71,8 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<ContainerDetailDto>>(_containerDal.GetContainerDetail());
         }
+
+        [ValidationAspect(typeof(ContainerValidator))]
         public IResult Update(Container container)
         {
           

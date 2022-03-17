@@ -7,6 +7,8 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System.Collections.Generic;
 using System.Linq;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Validation;
 
 namespace Business.Concrete
 {
@@ -18,6 +20,7 @@ namespace Business.Concrete
         {
             _employeeDal = employeeDal;
         }
+        [ValidationAspect(typeof(EmployeeValidator))]
         public IResult Add(Employee employee)
         {
             IResult result = BusinessRules.Run(CheckEmployeeCount(employee.AgentId),
@@ -54,6 +57,8 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<EmployeeDetailDto>>(_employeeDal.GetEmployeeDetails());
         }
+
+        [ValidationAspect(typeof(EmployeeValidator))]
         public IResult Update(Employee employee)
         {
             _employeeDal.Update(employee);

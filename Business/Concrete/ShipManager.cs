@@ -9,6 +9,8 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Validation;
 
 namespace Business.Concrete
 {
@@ -19,7 +21,7 @@ namespace Business.Concrete
         {
             _shipDal = shipDal;
         }
-
+        [ValidationAspect(typeof(ShipValidator))]
         public IResult Add(Ship ship)
         {
             IResult result = BusinessRules.Run(CheckDockCount(ship.DockNumber),
@@ -120,6 +122,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<ShipDetailDto>>(_shipDal.GetShipDetails());
         }
+        [ValidationAspect(typeof(ShipValidator))]
         public IResult Update(Ship ship)
         {
             _shipDal.Update(ship);
