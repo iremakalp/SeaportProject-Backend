@@ -1,2 +1,2 @@
 # SeaportProject-Backend
-Asp.Net Core ile Liman Projesi Geliştirme
+Port Project Development with .Net Core and Layered Architecture
