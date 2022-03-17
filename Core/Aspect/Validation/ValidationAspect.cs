@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Core.Utilities.Messages;
 
 namespace Core.Aspect.Validation
 {
@@ -16,7 +17,7 @@ namespace Core.Aspect.Validation
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
-                throw new System.Exception("Bir doğrulama sınıfı değil");
+                throw new System.Exception(AspectMessages.WrongValidationType);
             }
             _validatorType = validatorType;
         }
